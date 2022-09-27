@@ -67,4 +67,11 @@ class TimeFormatterTest {
     void test_Negative_Second() {
         Assertions.assertThrows(NegativeNumberException.class, () -> formatter.formatSecondsForReadableFormat(-1L));
     }
+
+    @Test
+    void test_One_Year_And_One_Second() {
+        String testCase9 = formatter.formatSecondsForReadableFormat(31536001L);
+        Assertions.assertEquals("1 year and 1 seconds", testCase9);
+
+    }
 }

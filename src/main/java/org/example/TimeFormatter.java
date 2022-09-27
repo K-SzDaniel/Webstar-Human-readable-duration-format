@@ -1,29 +1,5 @@
 package org.example;
 
-
-
-/*
--> Az eredményül kapott kifejezés olyan összetevőkből áll, mint 4 seconds, 1 year, stb.
- Általában egy pozitív egész szám és az érvényes időegységek egyike, szóközzel elválasztva.
- Az időegységet többes számban használjuk, ha az egész szám nagyobb, mint 1.
-
--> Az összetevőket vesszővel és szóközzel ( ", ") választjuk el. Kivéve az utolsó komponenst,
-amely el van választva " and ", mint ahogy angolul írják.
-
--> Vegye figyelembe, hogy a szóközök fontosak.
-
--> Jelentősebb időegység fog bekövetkezni előtte, mint a legkevésbé jelentős. Ezért 1 second and 1 year nem helyes, de 1 year and 1 second igen.
-
-
-->Egy komponens egyáltalán nem jelenik meg, ha értéke véletlenül nulla.
-Ezért 1 minute and 0 seconds
-nem érvényes, de igazságosnak kell lennie 1 minute.
-
-->Egy időegységet „amennyire csak lehet” kell használni. Ez azt jelenti, hogy a függvénynek nem kell visszatérnie 61 seconds,
- hanem 1 minute and 1 secondhelyette. Formálisan egy komponens által megadott időtartam nem lehet hosszabb bármely érvényes, jelentősebb időegységnél.
-
-*/
-
 import org.example.exception.NegativeNumberException;
 
 public class TimeFormatter {
