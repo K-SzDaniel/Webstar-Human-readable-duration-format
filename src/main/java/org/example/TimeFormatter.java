@@ -47,5 +47,4 @@ public class TimeFormatter {
         return result.toString();
     }
 
-
 }
