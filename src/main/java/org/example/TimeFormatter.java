@@ -6,9 +6,9 @@ import java.util.List;
 
 public class TimeFormatter {
 
-    public String formatSecondsForReadableFormat(Long seconds) {
-        Long number;
-        Long timeTypeInNumber;
+    public String formatSecondsForReadableFormat(long seconds) {
+        long number;
+        long timeTypeInNumber;
         String timeTypeInString;
         boolean isTheFirstString = true;
 
@@ -32,19 +32,7 @@ public class TimeFormatter {
                 number = Math.floorDiv(seconds, timeTypeInNumber);
                 seconds = seconds % timeTypeInNumber;
 
-                if (isTheFirstString && number == 1) {
-                    result.append(number).append(" ").append(timeTypeInString);
-                } else if (isTheFirstString  && number > 1) {
-                    result.append(number).append(" ").append(timeTypeInString).append("s");
-                } else if (!isTheFirstString && number > 1 && seconds > 0) {
-                    result.append(", ").append(number).append(" ").append(timeTypeInString).append("s");
-                } else if (!isTheFirstString && number == 1 && seconds > 0) {
-                    result.append(", ").append(number).append(" ").append(timeTypeInString);
-                } else if (seconds == 0 && number > 1) {
-                    result.append(" and ").append(number).append(" ").append(timeTypeInString).append("s");
-                } else {
-                    result.append(" and ").append(number).append(" ").append(timeTypeInString);
-                }
+                setTheResultToString(seconds, number, timeTypeInString, isTheFirstString, result);
 
                 isTheFirstString = false;
             }
@@ -53,6 +41,21 @@ public class TimeFormatter {
         return result.toString();
     }
 
+    private static void setTheResultToString(Long seconds, Long number, String timeTypeInString, boolean isTheFirstString, StringBuilder result) {
+        if (isTheFirstString && number == 1) {
+            result.append(number).append(" ").append(timeTypeInString);
+        } else if (isTheFirstString && number > 1) {
+            result.append(number).append(" ").append(timeTypeInString).append("s");
+        } else if (!isTheFirstString && number > 1 && seconds > 0) {
+            result.append(", ").append(number).append(" ").append(timeTypeInString).append("s");
+        } else if (!isTheFirstString && number == 1 && seconds > 0) {
+            result.append(", ").append(number).append(" ").append(timeTypeInString);
+        } else if (seconds == 0 && number > 1) {
+            result.append(" and ").append(number).append(" ").append(timeTypeInString).append("s");
+        } else {
+            result.append(" and ").append(number).append(" ").append(timeTypeInString);
+        }
+    }
 
 
 }
