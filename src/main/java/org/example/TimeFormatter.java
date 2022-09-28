@@ -8,8 +8,8 @@ public class TimeFormatter {
 
     public String formatSecondsForReadableFormat(Long seconds) {
         Long number;
-        Long test;
-        String test2;
+        Long timeTypeInNumber;
+        String timeTypeInString;
         boolean isTheFirstString = true;
 
         List<Long> timeTypeInSeconds = (List.of(31536000L, 86400L, 3600L, 60L, 1L));
@@ -25,19 +25,19 @@ public class TimeFormatter {
         }
 
         for (int i = 0; i < 5; i++) {
-            test = timeTypeInSeconds.get(i);
-            test2 = timeTypeTitle.get(i);
+            timeTypeInNumber = timeTypeInSeconds.get(i);
+            timeTypeInString = timeTypeTitle.get(i);
 
-            if ((seconds / test) >= 1) { //year
-                number = Math.floorDiv(seconds, test);
-                seconds -= (Math.floorDiv(seconds, test) * test);
+            if ((seconds / timeTypeInNumber) >= 1) { //year
+                number = Math.floorDiv(seconds, timeTypeInNumber);
+                seconds -= (Math.floorDiv(seconds, timeTypeInNumber) * timeTypeInNumber);
 
-                if (isTheFirstString && !test2.equals(" seconds")) {
-                    result.append(number).append(" ").append(test2);
-                } else if (test2.equals(" seconds")) {
-                    result.append(" and ").append(number).append(test2);
+                if (isTheFirstString && !timeTypeInString.equals(" seconds")) {
+                    result.append(number).append(" ").append(timeTypeInString);
+                } else if (timeTypeInString.equals(" seconds")) {
+                    result.append(" and ").append(number).append(timeTypeInString);
                 } else {
-                    result.append(", ").append(number).append(" ").append(test2);
+                    result.append(", ").append(number).append(" ").append(timeTypeInString);
                 }
 
                 isTheFirstString = false;
