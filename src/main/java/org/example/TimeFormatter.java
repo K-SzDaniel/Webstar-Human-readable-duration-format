@@ -11,9 +11,10 @@ public class TimeFormatter {
         Long timeTypeInNumber;
         String timeTypeInString;
         boolean isTheFirstString = true;
+        boolean isTheLastOne;
 
-        List<Long> timeTypeInSeconds = (List.of(31536000L, 86400L, 3600L, 60L, 1L));
-        List<String> timeTypeTitle = (List.of("year", "day", "hour", "minute", " seconds"));
+        List<Long> timeTypeInSeconds = (List.of(31536000L, 86400L, 3600L, 60L, 1L, 0L));
+        List<String> timeTypeTitle = (List.of("year", "day", "hour", "minute", "second"));
 
         StringBuilder result = new StringBuilder();
 
@@ -30,22 +31,29 @@ public class TimeFormatter {
 
             if ((seconds / timeTypeInNumber) >= 1) {
                 number = Math.floorDiv(seconds, timeTypeInNumber);
-                seconds -= (Math.floorDiv(seconds, timeTypeInNumber) * timeTypeInNumber);
+                seconds = seconds % timeTypeInNumber;
 
-                if (isTheFirstString && !timeTypeInString.equals(" seconds")) {
+                if (isTheFirstString && number == 1) {
                     result.append(number).append(" ").append(timeTypeInString);
-                } else if (timeTypeInString.equals(" seconds")) {
-                    result.append(" and ").append(number).append(timeTypeInString);
-                } else {
+                } else if (isTheFirstString  && number > 1) {
+                    result.append(number).append(" ").append(timeTypeInString).append("s");
+                } else if (!isTheFirstString && number > 1 && seconds > 0) {
+                    result.append(", ").append(number).append(" ").append(timeTypeInString).append("s");
+                } else if (!isTheFirstString && number == 1 && seconds > 0) {
                     result.append(", ").append(number).append(" ").append(timeTypeInString);
+                } else if (seconds == 0 && number > 1) {
+                    result.append(" and ").append(number).append(" ").append(timeTypeInString).append("s");
+                } else {
+                    result.append(" and ").append(number).append(" ").append(timeTypeInString);
                 }
 
                 isTheFirstString = false;
             }
         }
 
-
         return result.toString();
     }
+
+
 
 }
