@@ -28,7 +28,7 @@ public class TimeFormatter {
             timeTypeInNumber = timeTypeInSeconds.get(i);
             timeTypeInString = timeTypeTitle.get(i);
 
-            if ((seconds / timeTypeInNumber) >= 1) { //year
+            if ((seconds / timeTypeInNumber) >= 1) {
                 number = Math.floorDiv(seconds, timeTypeInNumber);
                 seconds -= (Math.floorDiv(seconds, timeTypeInNumber) * timeTypeInNumber);
 
