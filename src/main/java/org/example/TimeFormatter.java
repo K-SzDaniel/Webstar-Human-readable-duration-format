@@ -11,7 +11,6 @@ public class TimeFormatter {
         Long timeTypeInNumber;
         String timeTypeInString;
         boolean isTheFirstString = true;
-        boolean isTheLastOne;
 
         List<Long> timeTypeInSeconds = (List.of(31536000L, 86400L, 3600L, 60L, 1L, 0L));
         List<String> timeTypeTitle = (List.of("year", "day", "hour", "minute", "second"));
