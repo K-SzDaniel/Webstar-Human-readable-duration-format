@@ -41,7 +41,7 @@ public class TimeFormatter {
         return result.toString();
     }
 
-    private static void setTheResultToString(Long seconds, Long number, String timeTypeInString, boolean isTheFirstString, StringBuilder result) {
+    private void setTheResultToString(Long seconds, Long number, String timeTypeInString, boolean isTheFirstString, StringBuilder result) {
         if (isTheFirstString && number == 1) {
             result.append(number).append(" ").append(timeTypeInString);
         } else if (isTheFirstString && number > 1) {
